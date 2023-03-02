@@ -7,7 +7,8 @@ return [
 
     // Display name, shown to users, for SAML2 option
     'name' => env('SAML2_NAME', 'SSO'),
-
+    //prevent SAML users from auto-registering
+    'saml_auto_register' => env('SAML2_AUTO_REGISTER', 'true'),
     // Dump user details after a login request for debugging purposes
     'dump_user_details' => env('SAML2_DUMP_USER_DETAILS', false),
 

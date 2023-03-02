@@ -41,7 +41,7 @@ class RegistrationService
 
     /**
      * Check if standard BookStack User registrations are currently allowed.
-     * Does not prevent external-auth based registration.
+     * Does not prevent external-auth based registration. 
      */
     protected function registrationAllowed(): bool
     {
@@ -57,7 +57,7 @@ class RegistrationService
      *
      * @throws UserRegistrationException
      */
-    public function findOrRegister(string $name, string $email, string $externalId): User
+    public function findOrRegister(string $name, string $email, string $externalId, bool $AutoRegister = true): User
     {
         $user = User::query()
             ->where('external_auth_id', '=', $externalId)
@@ -71,7 +71,11 @@ class RegistrationService
                 'external_auth_id' => $externalId,
             ];
 
-            $user = $this->registerUser($userData, null, false);
+            //if users are manually created, you may want to disable SAML auto-register
+            if ($AutoRegister) 
+            {
+                $user = $this->registerUser($userData, null, false);
+            } 
         }
 
         return $user;

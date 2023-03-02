@@ -5,6 +5,9 @@ return [
     // Display name, shown to users, for OpenId option
     'name' => env('OIDC_NAME', 'SSO'),
 
+    //prevent ODIC users from auto-registering
+    'odic_auto_register' => env('ODIC_AUTO_REGISTER', 'true'),
+
     // Dump user details after a login request for debugging purposes
     'dump_user_details' => env('OIDC_DUMP_USER_DETAILS', false),
 

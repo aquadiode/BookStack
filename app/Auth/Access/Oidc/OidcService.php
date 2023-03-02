@@ -252,6 +252,7 @@ class OidcService
                 $userDetails['name'],
                 $userDetails['email'],
                 $userDetails['external_id']
+                $this->config['odic_auto_register']
             );
         } catch (UserRegistrationException $exception) {
             throw new OidcException($exception->getMessage());
