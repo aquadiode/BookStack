@@ -57,7 +57,7 @@ class RegistrationService
      *
      * @throws UserRegistrationException
      */
-    public function findOrRegister(string $name, string $email, string $externalId, bool $AutoRegister = true): User
+    public function findOrRegister(string $name, string $email, string $externalId, bool $AutoRegister = true): ?User
     {
         $user = User::query()
             ->where('external_auth_id', '=', $externalId)
