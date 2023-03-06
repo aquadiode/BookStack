@@ -54,7 +54,7 @@ class ClearActivity extends Commanduse Illuminate\Console\Command;
     public function handle()
     {
         $ldapConnection = $this->getConnection();
-
+        $this->bindSystemUser($ldapConnection);
 
 
 
